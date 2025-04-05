@@ -1,25 +1,99 @@
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Mimi - AI Parenting Assistant</title>
+    <title>MIMI - AI Parenting Assistant</title>
     <link rel="stylesheet" href="styles.css" />
-    <script defer src="script.js?v=2.0.0"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="translations.js"></script>
+    <script defer src="script.js"></script>
 </head>
 <body>
-    <div class="chat-container">
-        <h1>Mimi - AI Parenting Assistant</h1>
-        <div id="chatbox" class="chatbox"></div>
-
-        <div class="input-container">
-            <input type="text" id="userInput" placeholder="Scrie un mesaj..." />
-            <button onclick="sendMessage()">Trimite</button>
+    <div class="app-container">
+        <!-- Language Switcher -->
+        <div class="language-switcher">
+            <button class="lang-btn" data-lang="en">
+                <img src="https://flagcdn.com/w20/gb.png" alt="English" title="English">
+            </button>
+            <button class="lang-btn" data-lang="ro">
+                <img src="https://flagcdn.com/w20/ro.png" alt="Română" title="Română">
+            </button>
         </div>
 
-        <div style="text-align: right; margin-top: 10px;">
-            <button onclick="resetMemory()">Resetează Memoria</button>
-        </div>
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <button class="new-chat-btn">
+                    <i class="fas fa-plus"></i>
+                    <span data-translate="newChat">New chat</span>
+                </button>
+            </div>
+            <nav class="nav-links">
+                <div class="nav-group">
+                    <a href="#" class="nav-link active">
+                        <i class="fas fa-bookmark"></i>
+                        <span data-translate="bookmarks">Bookmarks</span>
+                    </a>
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-book"></i>
+                        <span data-translate="learning">Learning</span>
+                    </a>
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-tools"></i>
+                        <span data-translate="tools">Tools</span>
+                    </a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="main-content">
+            <header class="chat-header">
+                <div class="model-selector">
+                    <span>MIMI 4.0</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="header-actions">
+                    <button class="action-btn">
+                        <i class="fas fa-clock"></i>
+                        <span data-translate="temporary">Temporary</span>
+                    </button>
+                </div>
+            </header>
+
+            <div class="chat-container">
+                <div id="chatbox" class="chatbox">
+                    <!-- Messages will be inserted here -->
+                </div>
+
+                <div class="input-section">
+                    <div class="input-container">
+                        <button class="action-btn upload-btn">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                        <input type="text" id="userInput" data-translate="inputPlaceholder" placeholder="What can I help with?" />
+                        <div class="input-actions">
+                            <button class="action-btn" data-action="search">
+                                <i class="fas fa-globe"></i>
+                                <span data-translate="search">Search</span>
+                            </button>
+                            <button class="action-btn" data-action="deep-research">
+                                <i class="fas fa-search"></i>
+                                <span data-translate="deepResearch">Deep research</span>
+                            </button>
+                            <button class="action-btn" data-action="more">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="input-footer">
+                        <p class="disclaimer" data-translate="disclaimer">MIMI can make mistakes. Check important info.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
 </body>
 </html>
